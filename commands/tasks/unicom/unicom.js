@@ -332,9 +332,9 @@ var start = async (params) => {
 
 
   // 我的钱包-沃钱包-幸运抽大奖
-  // await scheduler.regTask('dailyepay', async (request) => {
-  //   await require('./dailyepay').doTask(request, options)
-  // }, taskOption)
+   await scheduler.regTask('dailyepay', async (request) => {
+     await require('./dailyepay').doTask(request, options)
+   }, taskOption)
 
 
   // 沃钱包-联通支付日-转盘抽奖
@@ -382,7 +382,7 @@ var start = async (params) => {
     ignoreRelay: true
   })
 
-  // 每日0点自动兑换流量
+ /* // 每日0点自动兑换流量
   await scheduler.regTask('exchangeDFlow', async (request) => {
     await require('./exchangeDFlow').doTask(request, options)
   }, {
@@ -409,7 +409,7 @@ var start = async (params) => {
     startTime: 30 * 60,
     ignoreRelay: true
   })
-
+*/
   // 每日奖励信息结果推送
   if (!('asm_func' in process.env) || process.env.asm_func === 'false') {
     await scheduler.regTask('dailyNotifyReward', async (request) => {
